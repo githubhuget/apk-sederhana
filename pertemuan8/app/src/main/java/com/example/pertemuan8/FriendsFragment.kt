@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +22,9 @@ class FriendsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var friendAdapter: MyFriendAdapter
+    private val friends = mutableListOf<MyFriend>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +35,28 @@ class FriendsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false)
+        val view = inflater.inflate(R.layout.fragment_friends, container,false)
+        recyclerView = view. findViewById(R.id.recyclerView)
+        setuoRecyclerView()
+        return view
+    }
+
+    private fun setuoRecyclerView() {
+        friends.addAll(
+            listOf(
+                MyFriend("Huget","089603183042","hugetteguh12345@gmail.com"),
+                MyFriend("samsul", "024532454524563","samsul@gmail.com"),
+                MyFriend("bambang", "02146542318", "bambang@gmail.com")
+            )
+        )
+
+        friendAdapter = MyFriendAdapter(friends)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = friendAdapter
     }
 
     companion object {
