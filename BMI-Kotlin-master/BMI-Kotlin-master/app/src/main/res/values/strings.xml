@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Berat Badan App</string>
+    <string name="tinggi_cm">Tinggi (cm)</string>
+    <string name="berat_kg">Berat (kg)</string>
+    <string name="nama_apa">String</string>
+    <string name="nama_lengkap">Nama(String)</string>
+    <string name="alamat_anda">Alamat(String)</string>
+    <string name="notelepon">No Telp(Number)</string>
+
+</resources>
